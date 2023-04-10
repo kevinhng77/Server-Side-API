@@ -10,8 +10,9 @@ function getData(){
             return response.json();
         })
         .then(function(data){
-            var iterables = ['0','8','16','24','32']
+            var iterables = ['0','8','16','24','32','39']
             for (let value of iterables){
+                var weatherCode= data.list[value].weather[0].icon;
                 console.log(data.list[value].dt_txt);
                 console.log(data.list[value].main.temp);
                 console.log(data.list[value].wind.speed + " MPH");
