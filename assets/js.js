@@ -1,13 +1,10 @@
 var submitButton = document.getElementById('submit-button');
 var firstText = document.getElementById('card1');
-// var tempText = document.getElementById('submit-button');
-// var speedText = document.getElementById('submit-button');
-// var humidityText = document.getElementById('submit-button');
 var searchVar = document.getElementById('searchCard');
-var inputButton = document.getElementById('yourCity');
+var inputText = document.getElementById('yourCity');
 var apiKey= '2c4ad6b204a17feaa8527bcc62401e85';
-var cityName= 'Sacramento';
-var requestUrl= 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey;
+// var cityName= 'Sacramento';
+var requestUrl= 'https://api.openweathermap.org/data/2.5/forecast?q=' + inputText + '&appid=' + apiKey;
 
 function getData(){
     fetch(requestUrl)
@@ -25,11 +22,9 @@ function getData(){
             }
         })
     
-    localStorage.setItem("location", cityName);
-    searchVar.innerText= cityName;
+    // localStorage.setItem("location", inputText);
+    // searchVar.innerText= inputText;
 }
-
-console.log(firstText.children[1].children[0].src)
 
 
 
