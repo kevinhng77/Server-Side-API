@@ -17,14 +17,11 @@ function getData(){
         .then(function(data){
             var iterables = ['0','8','16','24','32','39']
             for (let value of iterables){
-                // console.log(data.list[value].dt_txt);
                 firstText.children[0].innerHTML= data.list[value].dt_txt;
-                // firstText.children[1].innerHTML= data.list[value].main.temp;
-                // var weatherCode= data.list[value].weather[0].icon;
-                // console.log(data.list[value].dt_txt);
-                // console.log(data.list[value].main.temp);
-                // console.log(data.list[value].wind.speed + " MPH");
-                // console.log(data.list[value].main.humidity +" %");
+                firstText.children[1].children[0].src = "https://openweathermap.org/img/wn/" +data.list[value].weather[0].icon+ "@2x.png"
+                firstText.children[1].children[1].innerHTML = data.list[value].main.temp;
+                firstText.children[1].children[2].innerHTML = data.list[value].wind.speed + " MPH";
+                firstText.children[1].children[3].innerHTML = data.list[value].main.humidity +" %";
             }
         })
     
@@ -32,7 +29,7 @@ function getData(){
     searchVar.innerText= cityName;
 }
 
-console.log(firstText.children[1].'temp');
+console.log(firstText.children[1].children[0].src)
 
 
 
