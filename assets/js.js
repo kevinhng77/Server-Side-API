@@ -66,22 +66,43 @@ function getData(){
                     para3.innerHTML="Humidity:" + data.list[value].main.humidity +" %";
                     newDiv3.appendChild(para3);
                 }
-            
+
+                function searchHistoryCards(){
+                    var h3tag= document.querySelector("h3")
+                    const newDiv1 = document.createElement("div");
+                    newDiv1.class= "d-flex position-relative";
+                    h3tag.append(newDiv1);
+                    const newDiv2 = document.createElement("div");
+                    const newH5= document.createElement("h5");
+                    newH5.class= "mt-0";
+                    newH5.id="searchCard";
+                    newH5.text=enteredCity;
+                    newDiv2.append(newH5);
+                    var a = document.createElement('a');
+                    a.setAttribute('href','#yourCity');
+                    
+                }
                 })
             
 }}
 
-function searchHistoryCards(){
-    var h3tag= document.querySelector("h3")
-    const newDiv1 = document.createElement("div");
-    h4tag.append(newDiv1);
-    newDiv1.class= "d-flex position-relative";
-    const newDiv2 = document.createElement("div");
-    h4tag.append(newDiv2);
+// function searchHistoryCards(){
+//     var h3tag= document.querySelector("h3")
+//     const newDiv1 = document.createElement("div");
+//     newDiv1.class= "d-flex position-relative";
+//     h3tag.append(newDiv1);
+//     const newDiv2 = document.createElement("div");
+//     const newH5= document.createElement("h5");
+//     newH5.class= "mt-0";
+//     newH5.id="searchCard";
+//     newH5.text=enteredCity;
+//     newDiv2.append(newH5);
+//     var a = document.createElement('a');
+//     a.setAttribute('href','#yourCity');
     
-}
+// }
 
 
-submitButton.addEventListener('click', getData, searchHistoryCards);
+submitButton.addEventListener('click', getData);
 searchCardButton.addEventListener('click', getData);
 
