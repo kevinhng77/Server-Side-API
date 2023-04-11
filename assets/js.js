@@ -4,6 +4,7 @@ var searchVar = document.getElementById('searchCard');
 var apiKey= '2c4ad6b204a17feaa8527bcc62401e85';
 var inputText = document.getElementById('yourCity');
 var searchCardButton= document.getElementById('searchCard');
+var sectionID= document.getElementById('sectionContainer');
 
 var city = JSON.parse(localStorage.getItem("city"));
 if (city=== null){
@@ -25,7 +26,6 @@ function getData(){
                 return response.json();
             })
             .then(function(data){
-                
                 var iterables = ['0']
                 for (let value of iterables){
                     console.log(data)
@@ -36,22 +36,20 @@ function getData(){
                     firstText.children[1].children[2].innerHTML = data.list[value].wind.speed + " MPH";
                     firstText.children[1].children[3].innerHTML = data.list[value].main.humidity +" %";
                 }
-                
+               
                 $('#sectionContainer').empty();
-
                 var iterables = ['8','16','24','32','39']
                 for (let value of iterables){
-                    var h4tag= document.querySelector("h4")
-                    const newDiv1 = document.createElement("div")
+                    const newDiv1 = document.createElement("div");
                     newDiv1.className= "card bg-light mb-3"
                     newDiv1.style= "max-width: 18rem;"
                     newDiv1.id="card2";
-                    h4tag.append(newDiv1);
-                    const newDiv2 = document.createElement("div")
+                    sectionID.append(newDiv1);
+                    const newDiv2 = document.createElement("div");
                     newDiv2.innerHTML= data.list[value].dt_txt;
-                    h4tag.append(newDiv2);
+                    sectionID.append(newDiv2);
                     const newDiv3 = document.createElement("div")
-                    h4tag.append(newDiv3);
+                    sectionID.append(newDiv3);
                     const newimg = document.createElement("img")
                     newimg.src="https://openweathermap.org/img/wn/" +data.list[value].weather[0].icon+ "@2x.png"
                     newDiv3.appendChild(newimg);
@@ -67,6 +65,7 @@ function getData(){
                     para3.className="humidity"
                     para3.innerHTML="Humidity:" + data.list[value].main.humidity +" %";
                     newDiv3.appendChild(para3);
+
                 }
                 // function searchHistoryCards(){
                 //     var h3tag= document.querySelector("h3")
