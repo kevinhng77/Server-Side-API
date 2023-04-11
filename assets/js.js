@@ -5,6 +5,7 @@ var apiKey= '2c4ad6b204a17feaa8527bcc62401e85';
 var inputText = document.getElementById('yourCity');
 var searchCardButton= document.getElementById('searchCard');
 var sectionID= document.getElementById('sectionContainer');
+var searchHistoryID= document.getElementById('searchHistory');
 
 var city = JSON.parse(localStorage.getItem("city"));
 if (city=== null){
@@ -67,10 +68,14 @@ function getData(){
                     newDiv3.appendChild(para3);
 
                 }
+
+
                 // function searchHistoryCards(){
                 //     var h3tag= document.querySelector("h3")
                 //     const newDiv1 = document.createElement("div");
                 //     newDiv1.class= "d-flex position-relative";
+                //     newDiv1.text='flex'
+                //     console.log(newDiv1)
                 //     h3tag.append(newDiv1);
                 //     const newDiv2 = document.createElement("div");
                 //     const newH5= document.createElement("h5");
@@ -82,25 +87,29 @@ function getData(){
                 //     a.setAttribute('href','#yourCity');
                     
                 // }
+
+
                 })
             
 }}
 
-// function searchHistoryCards(){
-//     var h3tag= document.querySelector("h3")
-//     const newDiv1 = document.createElement("div");
-//     newDiv1.class= "d-flex position-relative";
-//     h3tag.append(newDiv1);
-//     const newDiv2 = document.createElement("div");
-//     const newH5= document.createElement("h5");
-//     newH5.class= "mt-0";
-//     newH5.id="searchCard";
-//     newH5.text=enteredCity;
-//     newDiv2.append(newH5);
-//     var a = document.createElement('a');
-//     a.setAttribute('href','#yourCity');
+function searchHistoryCards(){
+    const newDiv1 = document.createElement("div");
+    newDiv1.class= "d-flex position-relative";
+    searchHistoryID.append(newDiv1);
+    const newDiv2 = document.createElement("div");
+    searchHistoryID.append(newDiv2);
+    const newH5= document.createElement("h5");
+    newH5.class= "mt-0";
+    newH5.id="searchCard";
+    newH5.text= enteredCity.value;
+    newDiv2.append(newH5);
+    var a = document.createElement('a');
+    a.setAttribute('href','#yourCity');
+    searchHistoryID.append(a)
     
-// }
+}
+searchHistoryCards();
 
 
 submitButton.addEventListener('click', getData);
