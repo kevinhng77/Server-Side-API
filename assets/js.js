@@ -3,7 +3,6 @@ var firstText = document.getElementById('card1');
 var searchVar = document.getElementById('searchCard');
 var apiKey= '2c4ad6b204a17feaa8527bcc62401e85';
 var inputText = document.getElementById('yourCity');
-var searchCardButton= document.getElementById('searchCard');
 var sectionID= document.getElementById('sectionContainer');
 var searchHistoryID= document.getElementById('searchHistory');
 
@@ -13,11 +12,8 @@ if (city=== null){
     localStorage.setItem("city", JSON.stringify(city))
 }
 
-let enteredCity= inputText.value;
-
 function getData(){
     let enteredCity= inputText.value;
-    console.log(enteredCity);
     if (enteredCity){
         city.push(enteredCity);
         localStorage.setItem("city", JSON.stringify(city));
@@ -29,8 +25,6 @@ function getData(){
             .then(function(data){
                 var iterables = ['0']
                 for (let value of iterables){
-                    console.log(data)
-                    console.log(data.list[value]);
                     firstText.children[0].innerHTML= data.list[value].dt_txt;
                     firstText.children[1].children[0].src = "https://openweathermap.org/img/wn/" +data.list[value].weather[0].icon+ "@2x.png"
                     firstText.children[1].children[1].innerHTML = data.list[value].main.temp;
@@ -69,6 +63,21 @@ function getData(){
 
                 }
 
+                function searchHistoryCards(){
+                    const newDiv1 = document.createElement("div");
+                    newDiv1.class= "d-flex position-relative";
+                    searchHistoryID.append(newDiv1);
+                    const newDiv2 = document.createElement("div");
+                    searchHistoryID.append(newDiv2);
+                    const newH5= document.createElement("h5");
+                    newH5.class= "mt-0";
+                    newH5.id="searchCard";
+                    newH5.text= enteredCity.value;
+                    newDiv2.append(newH5.class);
+                    var a = document.createElement('a');
+                    a.setAttribute('href','#yourCity');
+                    
+                }
 
                 // function searchHistoryCards(){
                 //     var h3tag= document.querySelector("h3")
@@ -93,25 +102,8 @@ function getData(){
             
 }}
 
-function searchHistoryCards(){
-    const newDiv1 = document.createElement("div");
-    newDiv1.class= "d-flex position-relative";
-    searchHistoryID.append(newDiv1);
-    const newDiv2 = document.createElement("div");
-    searchHistoryID.append(newDiv2);
-    const newH5= document.createElement("h5");
-    newH5.class= "mt-0";
-    newH5.id="searchCard";
-    newH5.text= enteredCity.value;
-    newDiv2.append(newH5);
-    var a = document.createElement('a');
-    a.setAttribute('href','#yourCity');
-    searchHistoryID.append(a)
-    
-}
-searchHistoryCards();
 
 
 submitButton.addEventListener('click', getData);
-searchCardButton.addEventListener('click', getData);
+// searchCardButton.addEventListener('click', getData);
 
