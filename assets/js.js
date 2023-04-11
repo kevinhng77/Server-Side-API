@@ -11,7 +11,7 @@ if (city=== null){
     localStorage.setItem("city", JSON.stringify(city))
 }
 
-
+let enteredCity= inputText.value;
 
 function getData(){
     let enteredCity= inputText.value;
@@ -25,7 +25,7 @@ function getData(){
                 return response.json();
             })
             .then(function(data){
-
+                
                 var iterables = ['0']
                 for (let value of iterables){
                     console.log(data)
@@ -36,6 +36,8 @@ function getData(){
                     firstText.children[1].children[2].innerHTML = data.list[value].wind.speed + " MPH";
                     firstText.children[1].children[3].innerHTML = data.list[value].main.humidity +" %";
                 }
+                
+                $('#sectionContainer').empty();
 
                 var iterables = ['8','16','24','32','39']
                 for (let value of iterables){
@@ -66,22 +68,21 @@ function getData(){
                     para3.innerHTML="Humidity:" + data.list[value].main.humidity +" %";
                     newDiv3.appendChild(para3);
                 }
-
-                function searchHistoryCards(){
-                    var h3tag= document.querySelector("h3")
-                    const newDiv1 = document.createElement("div");
-                    newDiv1.class= "d-flex position-relative";
-                    h3tag.append(newDiv1);
-                    const newDiv2 = document.createElement("div");
-                    const newH5= document.createElement("h5");
-                    newH5.class= "mt-0";
-                    newH5.id="searchCard";
-                    newH5.text=enteredCity;
-                    newDiv2.append(newH5);
-                    var a = document.createElement('a');
-                    a.setAttribute('href','#yourCity');
+                // function searchHistoryCards(){
+                //     var h3tag= document.querySelector("h3")
+                //     const newDiv1 = document.createElement("div");
+                //     newDiv1.class= "d-flex position-relative";
+                //     h3tag.append(newDiv1);
+                //     const newDiv2 = document.createElement("div");
+                //     const newH5= document.createElement("h5");
+                //     newH5.class= "mt-0";
+                //     newH5.id="searchCard";
+                //     newH5.text= enteredCity.value;
+                //     newDiv2.append(newH5);
+                //     var a = document.createElement('a');
+                //     a.setAttribute('href','#yourCity');
                     
-                }
+                // }
                 })
             
 }}
