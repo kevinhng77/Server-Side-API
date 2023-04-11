@@ -6,10 +6,12 @@ var inputText = document.getElementById('yourCity');
 var sectionID= document.getElementById('sectionContainer');
 var searchHistoryID= document.getElementById('searchHistory');
 
+localStorage.clear();
 var city = JSON.parse(localStorage.getItem("city"));
 if (city=== null){
     city = []
     localStorage.setItem("city", JSON.stringify(city))
+    
 }
 
 function getData(){
@@ -36,7 +38,7 @@ function getData(){
                 var iterables = ['8','16','24','32','39']
                 for (let value of iterables){
                     const newDiv1 = document.createElement("div");
-                    newDiv1.className= "card bg-light mb-3"
+                    newDiv1.className= "card bg-dark mb-3"
                     newDiv1.style= "max-width: 18rem;"
                     newDiv1.id="card2";
                     sectionID.append(newDiv1);
@@ -62,22 +64,45 @@ function getData(){
                     newDiv3.appendChild(para3);
 
                 }
+                // for (let value of city) {
+                //     console.log(value)
+                // }
+                var divButton1= document.createElement("div")
+                divButton1.class= "card"
+                divButton1.style= "width: 18rem;"
+                searchHistoryID.append(divButton1)
+                var divButton2= document.createElement("div")
+                divButton2.class= 'card-body'
+                searchHistoryID.append(divButton2)
+                var h5Text= document.createElement("h5")
+                h5Text.textContent= enteredCity
+                divButton2.append(h5Text)
+                var aTag = document.createElement("a")
+                aTag.href="#yourCity"
 
-                function searchHistoryCards(){
-                    const newDiv1 = document.createElement("div");
-                    newDiv1.class= "d-flex position-relative";
-                    searchHistoryID.append(newDiv1);
-                    const newDiv2 = document.createElement("div");
-                    searchHistoryID.append(newDiv2);
-                    const newH5= document.createElement("h5");
-                    newH5.class= "mt-0";
-                    newH5.id="searchCard";
-                    newH5.text= enteredCity.value;
-                    newDiv2.append(newH5.class);
-                    var a = document.createElement('a');
-                    a.setAttribute('href','#yourCity');
+                // <div class="card" style="width: 18rem;">
+                // <div class="card-body">
+                //     <h5 class="card-title">Card with stretched link</h5>
+                //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                //     <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
+                // </div>
+                // </div>
+
+                // function searchHistoryCards(){
+                //     const newDiv1 = document.createElement("div");
+                //     newDiv1.class= "d-flex position-relative";
+                //     searchHistoryID.append(newDiv1);
+                //     const newDiv2 = document.createElement("div");
+                //     searchHistoryID.append(newDiv2);
+                //     const newH5= document.createElement("h5");
+                //     newH5.class= "mt-0";
+                //     newH5.id="searchCard";
+                //     newH5.text= enteredCity.value;
+                //     newDiv2.append(newH5.class);
+                //     var a = document.createElement('a');
+                //     a.setAttribute('href','#yourCity');
                     
-                }
+                // }
 
                 // function searchHistoryCards(){
                 //     var h3tag= document.querySelector("h3")
